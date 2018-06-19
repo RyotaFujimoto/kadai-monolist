@@ -1,6 +1,6 @@
 @if ($items)
     <div class="row">
-        @foreach ($items as $item)
+        @foreach ($items as $key => $item)
             <div class="item">
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="panel panel-default">
@@ -13,21 +13,33 @@
                             @else
                                 <p class="item-title">{{ $item->name }}</p>
                             @endif
-                          <td>
+                            <td>
                             <span class="form-inline　text-center">
                             <span class="buttons text-center">
                                 @if (Auth::check())
                                     @include('items.want_button', ['item' => $item])
                                 @endif
-                             </span>
+                            </span>
                             <span class="buttons text-center">
                                 @if (Auth::check())
                                     @include('items.have_button', ['item' => $item])
                                 @endif
                             </span>
                             </span>
-                          </td>
+                            </td>
                         </div>
+                        
+                        @if (isset($item->want_count))
+                            <div class="panel-footer">
+                                <p class="text-center">{{ $key+1 }}位: {{ $item->want_count}} </p>
+                            </div>
+                        @endif
+                        
+                        @if (isset($item->have_count))
+                            <div class="panel-footer">
+                                <p class="text-center">{{ $key+1 }}位: {{ $item->have_count}} </p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
