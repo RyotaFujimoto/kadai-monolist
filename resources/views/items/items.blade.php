@@ -13,11 +13,20 @@
                             @else
                                 <p class="item-title">{{ $item->name }}</p>
                             @endif
-                            <div class="buttons text-center">
+                          <td>
+                            <span class="form-inline　text-center">
+                            <span class="buttons text-center">
                                 @if (Auth::check())
                                     @include('items.want_button', ['item' => $item])
                                 @endif
-                            </div>
+                             </span>
+                            <span class="buttons text-center">
+                                @if (Auth::check())
+                                    @include('items.have_button', ['item' => $item])
+                                @endif
+                            </span>
+                            </span>
+                          </td>
                         </div>
                     </div>
                 </div>
@@ -25,6 +34,3 @@
         @endforeach
     </div>
 @endif
-
-
-<!--商品の表示-->
