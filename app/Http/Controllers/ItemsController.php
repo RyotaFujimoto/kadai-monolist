@@ -25,7 +25,7 @@ namespace App\Http\Controllers;
             foreach ($rws_response->getData()['Items'] as $rws_item) {
                 $item = new Item();
                 $item->code = $rws_item['Item']['itemCode'];
-                                $item->name = $rws_item['Item']['itemName'];
+                $item->name = $rws_item['Item']['itemName'];
                 $item->url = $rws_item['Item']['itemUrl'];
                 $item->image_url = str_replace('?_ex=128x128', '', $rws_item['Item']['mediumImageUrls'][0]['imageUrl']);
                 $items[] = $item;
